@@ -1,7 +1,8 @@
-from scrapy.spider import Spider  
 from scrapy.selector import Selector  
-  
-from tutorial.items import DmozItem  
+from scrapy.spider import Spider  
+
+from tutorial.items import DmozItem
+
 
 class DmozSpider(Spider):  
     name = "dmoz"  

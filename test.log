@@ -1,0 +1,9 @@
+2015-10-20 16:00:02 [scrapy] INFO: Scrapy 1.0.3 started (bot: douban)
+2015-10-20 16:00:02 [scrapy] INFO: Optional features available: ssl, http11
+2015-10-20 16:00:02 [scrapy] INFO: Overridden settings: {'NEWSPIDER_MODULE': 'douban.spiders', 'SPIDER_MODULES': ['douban.spiders'], 'BOT_NAME': 'douban', 'USER_AGENT': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/536.5 (KHTML, like Gecko) Chrome/19.0.1084.54 Safari/536.5', 'LOG_FILE': 'test.log', 'DOWNLOAD_DELAY': 2}
+2015-10-20 16:01:08 [scrapy] INFO: Scrapy 1.0.3 started (bot: douban)
+2015-10-20 16:01:08 [scrapy] INFO: Optional features available: ssl, http11
+2015-10-20 16:01:08 [scrapy] INFO: Overridden settings: {'NEWSPIDER_MODULE': 'douban.spiders', 'SPIDER_MODULES': ['douban.spiders'], 'BOT_NAME': 'douban', 'USER_AGENT': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/536.5 (KHTML, like Gecko) Chrome/19.0.1084.54 Safari/536.5', 'LOG_FILE': 'test.log', 'DOWNLOAD_DELAY': 2}
+2015-10-20 16:01:10 [scrapy] INFO: Enabled extensions: CloseSpider, TelnetConsole, LogStats, CoreStats, SpiderState
+2015-10-20 16:01:10 [twisted] CRITICAL: Unhandled error in Deferred:
+2015-10-20 16:01:10 [twisted] CRITICAL: 

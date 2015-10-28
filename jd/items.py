@@ -12,7 +12,7 @@ class TutorialItem(Item):
     # name = Field()  
     pass  
   
-class DmozItem(Item):  
+class JdbookItem(Item):  
     title = Field()  
     link = Field()  
     desc = Field()
