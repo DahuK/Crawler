@@ -1,6 +1,8 @@
 eclipse.preferences.version=1
 encoding//douban/settings.py=utf-8
 encoding//jd/items.py=utf-8
+encoding//jd/pipelines.py=utf-8
+encoding//jd/settings.py=utf-8
 encoding//jd/spiders/jd_spider.py=UTF-8
 encoding//tutorial/items.py=utf-8
 encoding//tutorial/pipelines.py=utf-8

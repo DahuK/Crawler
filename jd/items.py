@@ -13,6 +13,7 @@ class TutorialItem(Item):
     pass  
   
 class JdbookItem(Item):  
-    title = Field()  
+    title = Field()
+    category = Field()
     link = Field()  
     desc = Field()
