@@ -17,6 +17,8 @@ class JDSpider(CrawlSpider):
     def parseItemurl(self, response):
         #itemurl = response.xpath("//div[@id='choose-color']/div[2]/div")
         itemurl = response.xpath("//div[@id='J_selector']/div[3]/div/div[2]/div[1]/ul")
+        
+        print itemurl
         i = 1
         for url in itemurl.xpath("a/@href").extract():
             item = JdbookItem()
@@ -28,10 +30,8 @@ class JDSpider(CrawlSpider):
                 
     rules = [  
    #     Rule(LxmlLinkExtractor(allow="/\d{8}.html"), callback=parseItemurl),
-        Rule(LxmlLinkExtractor(allow=("/list.html\?cat=1713%2C3287%2C3797&page=\d+&JL=3_")), callback=parseItemurl)
-             
- #       Rule(LxmlLinkExtractor(allow=("/list.html\?cat=1713%2C3287%2C3797&page=\d+&JL=3_"), callback=parseItemurl, restrict_xpaths=("//a[@class='next']")),
- #            follow=True)  
+        Rule(LxmlLinkExtractor(allow=("/\d{8}.html")), callback=parseItemurl),
+        Rule(LxmlLinkExtractor(allow=("http://list.jd.com/list.html?cat=1713,3287,3797")), follow=True)  
     ]
 
   
