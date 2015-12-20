@@ -1,9 +1,8 @@
 #-*- coding: UTF-8 -*- 
-from scrapy import item
-from scrapy.http.request import Request
-from scrapy.linkextractors.lxmlhtml import LxmlLinkExtractor
+from scrapy.http import Request
 from scrapy.selector import Selector  
-from scrapy.spiders import CrawlSpider, Rule
+from scrapy.contrib.linkextractors.lxmlhtml import LxmlLinkExtractor  
+from scrapy.contrib.spiders import Rule, CrawlSpider  
 from jd.items import JdbookItem
 
 
@@ -14,9 +13,12 @@ class JDSpider(CrawlSpider):
                     "http://list.jd.com/list.html?cat=1713,3287,3797"
     ]
 
-    def parseItemurl(self, response):
+    def parseItemurl(response):
         #itemurl = response.xpath("//div[@id='choose-color']/div[2]/div")
+        print 'IIIIIIIII'
         itemurl = response.xpath("//div[@id='J_selector']/div[3]/div/div[2]/div[1]/ul")
+        
+        name = response.xpath("//*[@id='name']/h1")
         
         print itemurl
         i = 1
@@ -24,18 +26,19 @@ class JDSpider(CrawlSpider):
             item = JdbookItem()
             item['categoty'] = response.xpath("//div[@id='J_selector']/div[3]/div/div[2]/div[1]/ul/li[" + str(i) + "]/a/@title").extract()
             i = i + 1
-            r = Request(url, callback=self.parseDetail)
+            r = Request(url, callback= parseDetail)
             r.meta['item'] = item
             yield r
                 
     rules = [  
    #     Rule(LxmlLinkExtractor(allow="/\d{8}.html"), callback=parseItemurl),
-        Rule(LxmlLinkExtractor(allow=("/\d{8}.html")), callback=parseItemurl),
-        Rule(LxmlLinkExtractor(allow=("http://list.jd.com/list.html?cat=1713,3287,3797")), follow=True)  
+        
+        Rule(LxmlLinkExtractor(allow=("list.html?cat=1713,3287,3797&ev=12753_136338@&page=1&JL=3_%E7%A8%8B%E5%BA%8F%E7%B1%BB%E5%9E%8B_Java"), restrict_xpaths=("//a[@class='next']")), follow=True),  
+        Rule(LxmlLinkExtractor(allow=("/\d{8}.html")), callback=parseItemurl)
     ]
 
   
-    def parseDetail(self, response):
+    def parseDetail(response):
 #        mainurl = response.url
 #        productid = mainurl[19:29]
 #        priceUrl = 'http://p.3.cn/prices/mgets?skuIds=J_' + productid + 'J_'
@@ -104,7 +107,7 @@ class JDSpider(CrawlSpider):
 #        r.meta['item'] = item  
 #        return r  
     
-    def parsePrice(self, response):  
+    def parsePrice(response):  
         sel = Selector(text=response.body)  
         try:  
             price = sel.xpath("//text()").extract()[0].encode('utf-8').split('"')[7]  
