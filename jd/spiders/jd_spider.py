@@ -1,10 +1,11 @@
 #-*- coding: UTF-8 -*- 
 import re
 
-from scrapy.contrib.linkextractors.lxmlhtml import LxmlLinkExtractor  
-from scrapy.contrib.spiders import Rule, CrawlSpider  
+from scrapy.linkextractors.lxmlhtml import LxmlLinkExtractor  
+from scrapy.spiders import CrawlSpider, Rule
 from scrapy.http import Request
 from scrapy.selector import Selector  
+from scrapy.selector.lxmlsel import HtmlXPathSelector
 
 from jd.items import JdbookItem
 
@@ -12,15 +13,16 @@ from jd.items import JdbookItem
 class JDSpider(CrawlSpider):  
     name = "jd"  
     allowed_domains = ["jd.com"]  
-    start_urls = [  
-                    "http://list.jd.com/list.html?cat=1713,3287,3797"
+    start_urls = [
+        "http://list.jd.com/list.html?cat=1713,3287,3797"
+   #     "http://list.jd.com/list.html?cat=1713,3287,3797&ev=12753%5F136338&go=0&JL=3_%E7%A8%8B%E5%BA%8F%E7%B1%BB%E5%9E%8B_Java"
     ]
-
-    def printhxs(hxs): 
+     
+    def printhxs(self, hxs): 
         for i in hxs: 
             print i.encode('utf-8')
             
-    def parse_item_url(response):
+    def parse_item_url(self, response):
         #itemurl = response.xpath("//div[@id='choose-color']/div[2]/div")
         print 'IIIIIIIII'
         item = JdbookItem()
@@ -30,22 +32,16 @@ class JDSpider(CrawlSpider):
         print item['name']
         
         return item
-#         for url in itemurl.xpath("//*[@id='itemInfo'']").extract():
-#             item = JdbookItem()
-#             item['name'] = url.xpath("//*[@id='name']/h1/text()").extract()
-#             
-#                         
-#             i = i + 1
-#             r = Request(url, callback= parseDetail)
-#             r.meta['item'] = item
-#             yield r
     
-    def parse_next_page(response):
-        sel = Selector(response)
-        pages_num = sel.xpath("//*[@id='J_bottomPage']/span[2]/em[1]/b/text()")  
+    def parse_next_page(self, response):
+        print("Fetch group home page: %s" % response.url)
+ 
+        hxs = HtmlXPathSelector(response)
         
-        page_url = sel.xpath("//*[@id='J_bottomPage']/span[1]/a[2]/@href").extract()
-        #/list.html?cat=1713,3287,3797&ev=12753_136338&page=1&go=0&JL=6_0_0
+        pages_num = hxs.select("//*[@id='J_bottomPage']/span[2]/em[1]/b/text()").extract()[0]
+        print pages_num
+        page_url = hxs.select("//*[@id='J_bottomPage']/span[1]/a[2]/@href").extract()[0]
+        print page_url
         PAGE_PATTERN = r'(.+page=)[\d]+(.+)'
         parse = re.compile(PAGE_PATTERN, re.UNICODE|re.VERBOSE)
         match = parse.search(page_url)
@@ -54,20 +50,23 @@ class JDSpider(CrawlSpider):
             post_url = match.group(2)
             
             for i in xrange(2, int(pages_num)+1):
-                
-                page_url = pre_url+ str(i) + post_url
-                r = Request(page_url, callback = parse_detail)
-                sel = Selector(response)
-                return
+                #iterate each page
+                page_url = 'http://list.jd.com' + pre_url+ str(i) + post_url
+                print page_url + ' ??????????????????'
+                r = Request(page_url, callback = self.parse_detail)
+                yield r
         else:
             print 'NONONONO!'
 
     
-    def parse_detail(response):
-        sel = Selector(response)
-        book_element = sel.xpath("//div[@class='tab-content-item j-sku-item tab-cnt-i-selected']")
-        if book_element is None:
-            book_element = sel.xpath("//div") 
+    def parse_detail(self, response):
+        print '--------------------------'
+        hxs = HtmlXPathSelector(response)
+        book_element = hxs.select("//div[@class='tab-content-item j-sku-item tab-cnt-i-selected']")
+        print str(book_element) + ' ::::::::::::::'
+        if book_element is None or len(book_element) == 0:
+            book_element = hxs.select("//div")
+            print str(book_element) + ' >>>>>>>>>>>>>'
         item = JdbookItem()
         item['name'] = book_element.xpath('/div[3]/a/em/text()').extract().encode('utf-8')  
         item['price'] = book_element.xpath('/div[2]/strong/i/text()').extract().encode('utf-8')
@@ -77,16 +76,16 @@ class JDSpider(CrawlSpider):
         item['shop'] = book_element.xpath('/div[7]/span/text()').extract().encode('utf-8')
         return item
         
-    rules = [        
+    rules = [                 
 #         Rule(LxmlLinkExtractor(allow=("list.html?cat=1713,3287,3797&ev=12753_136338@&page=1&JL=3_%E7%A8%8B%E5%BA%8F%E7%B1%BB%E5%9E%8B_Java"), restrict_xpaths=("//a[@class='next']")), follow=True),  
 #         Rule(LxmlLinkExtractor(allow=("/\d{8}.html")), callback=parseItemurl)
-        
-        Rule(LxmlLinkExtractor(allow=("list.html?cat=1713,3287,3797&ev=12753_136338@&page=1&JL=3_%E7%A8%8B%E5%BA%8F%E7%B1%BB%E5%9E%8B_Java"), restrict_xpaths=("//a[@class='next']")), follow=True),
-        Rule(LxmlLinkExtractor(allow=("//*[@id='plist']/ul/li[\d+]"), callback=parse_detail),
-        Rule(LxmlLinkExtractor(allow=("//*[@id='J_bottomPage']")), callback=parse_next_page)
+#         Rule(LxmlLinkExtractor(restrict_xpaths=("//*[@id='J_bottomPage']/span[1]")), follow=True),
+#         Rule(LxmlLinkExtractor(allow=("/\d{8}.html")), callback=parse_item_url)
+#         Rule(LxmlLinkExtractor(allow=("//*[@id='plist']/ul/li[\d+]")), callback=parse_detail),
+         Rule(LxmlLinkExtractor(allow=(r'^.+[Java]$'), restrict_xpaths=("//*[@id='J_selector']/div[4]/div/div[2]/div[1]/ul")), callback='parse_next_page')
     ]
 
-    def parsePrice(response):  
+    def parsePrice(self, response):  
         sel = Selector(text=response.body)  
         try:  
             price = sel.xpath("//text()").extract()[0].encode('utf-8').split('"')[7]  
