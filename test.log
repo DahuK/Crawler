@@ -7,3 +7,348 @@
 2015-10-20 16:01:10 [scrapy] INFO: Enabled extensions: CloseSpider, TelnetConsole, LogStats, CoreStats, SpiderState
 2015-10-20 16:01:10 [twisted] CRITICAL: Unhandled error in Deferred:
 2015-10-20 16:01:10 [twisted] CRITICAL: 
+2016-01-13 19:04:07 [scrapy] INFO: Scrapy 1.0.3 started (bot: jd)
+2016-01-13 19:04:07 [scrapy] INFO: Optional features available: ssl, http11
+2016-01-13 19:04:07 [scrapy] INFO: Overridden settings: {'NEWSPIDER_MODULE': 'jd.spiders', 'SPIDER_MODULES': ['jd.spiders'], 'LOG_FILE': 'test.log', 'LOG_LEVEL': 'INFO', 'BOT_NAME': 'jd'}
+2016-01-13 19:04:07 [scrapy] INFO: Enabled extensions: CloseSpider, TelnetConsole, LogStats, CoreStats, SpiderState
+2016-01-13 19:04:07 [scrapy] INFO: Enabled downloader middlewares: HttpAuthMiddleware, DownloadTimeoutMiddleware, UserAgentMiddleware, RetryMiddleware, DefaultHeadersMiddleware, MetaRefreshMiddleware, HttpCompressionMiddleware, RedirectMiddleware, CookiesMiddleware, ChunkedTransferMiddleware, DownloaderStats
+2016-01-13 19:04:07 [scrapy] INFO: Enabled spider middlewares: HttpErrorMiddleware, OffsiteMiddleware, RefererMiddleware, UrlLengthMiddleware, DepthMiddleware
+2016-01-13 19:04:07 [scrapy] INFO: Enabled item pipelines: 
+2016-01-13 19:04:07 [scrapy] INFO: Spider opened
+2016-01-13 19:04:07 [scrapy] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2016-01-13 19:04:09 [py.warnings] WARNING: E:\workspace\4.5_64_Learning\Crawler\jd\spiders\jd_spider.py:39: ScrapyDeprecationWarning: scrapy.selector.HtmlXPathSelector is deprecated, instantiate scrapy.Selector instead.
+  hxs = HtmlXPathSelector(response)
+
+2016-01-13 19:04:09 [py.warnings] WARNING: E:\workspace\4.5_64_Learning\Crawler\jd\spiders\jd_spider.py:41: ScrapyDeprecationWarning: Call to deprecated function select. Use .xpath() instead.
+  pages_num = hxs.select("//*[@id='J_bottomPage']/span[2]/em[1]/b/text()").extract()[0]
+
+2016-01-13 19:04:09 [py.warnings] WARNING: c:\python27\lib\site-packages\scrapy\selector\unified.py:108: ScrapyDeprecationWarning: scrapy.selector.HtmlXPathSelector is deprecated, instantiate scrapy.Selector instead.
+  for x in result]
+
+2016-01-13 19:04:09 [py.warnings] WARNING: E:\workspace\4.5_64_Learning\Crawler\jd\spiders\jd_spider.py:43: ScrapyDeprecationWarning: Call to deprecated function select. Use .xpath() instead.
+  page_url = hxs.select("//*[@id='J_bottomPage']/span[1]/a[2]/@href").extract()[0]
+
+2016-01-13 19:04:10 [jd] INFO: --------------------------
+2016-01-13 19:04:10 [py.warnings] WARNING: E:\workspace\4.5_64_Learning\Crawler\jd\spiders\jd_spider.py:65: ScrapyDeprecationWarning: scrapy.selector.HtmlXPathSelector is deprecated, instantiate scrapy.Selector instead.
+  hxs = HtmlXPathSelector(response)
+
+2016-01-13 19:04:10 [jd] INFO: GGGGGGGGGGGGGGGGGGGGGGGGG: <li class="gl-item">
+                        <div class="gl-i-wrap j-sku-item" data-sku="11320549" venderid="1000004111" jdzy_shop_id="1000004111" ts_venderid="">
+  <div class="p-img">
+    <a target="_blank" href="http://item.jd.com/11320549.html">
+                    <img width="200" height="200" data-img="1" src="//img14.360buyimg.com/n7/g13/M08/0F/17/rBEhU1JWNmwIAAAAAAEhsfsJ5zoAAD9xwPEW70AASHJ284.jpg">
+          </a>
+      </div>
+  <div class="p-price">
+    <strong class="J_price"><em></em><i></i></strong>
+    <div class="p-icons J-pro-icons">
+          </div>
+  </div>
+  <div class="p-name">
+    <a target="_blank" title="" href="http://item.jd.com/11320549.html">
+      <em>软件开发实战：Java Web开发实战（附DVD-ROM光盘1张）</em>
+      <i class="promo-words"></i>
+    </a>
+  </div>
+      <div class="p-bookdetails">
+      <span class="p-bi-name">
+                  <span class="author_type_1" style="display: ;">
+                                                                     <a title="软件开发技术联盟" href="http://book.jd.com/writer/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF%E8%81%94%E7%9B%9F_1.html" target="_blank"> 软件开发技术联盟 </a>                                        编          </span>
+                        </span>
+      <em>|</em>      <span class="p-bi-store">
+                  <a title="清华大学出版社" href="http://book.jd.com/publish/%E6%B8%85%E5%8D%8E%E5%A4%A7%E5%AD%A6%E5%87%BA%E7%89%88%E7%A4%BE_1.html" target="_blank">清华大学出版社</a>
+              </span>
+      <em>|</em>      <span class="p-bi-date">
+        2013-09      </span>
+    </div>
+        <div class="p-shop hide" data-score="4" data-reputation="0" data-shopid="" data-done="1"></div>
+    <div class="p-commit"><strong>已有<a target="_blank" href="http://item.jd.com/11320549.html#comments-list">77</a>人评价</strong></div>
+    <div class="p-shopnum">
+      <span class="curr-shop">京东自营</span>
+    </div>
+    <div class="p-operate">
+      <a class="p-o-btn focus J_focus" data-sku="11320549" href="javascript:;">
+        <i></i>关注
+      </a>
+      <a class="p-o-btn addcart" target="_blank" href="http://gate.jd.com/InitCart.aspx?pid=11320549&amp;pcount=1&amp;ptype=1">
+        <i></i>加入购物车
+      </a>
+    </div>
+    <div class="p-stock" data-isdeliveryable="5" style="display: none;"></div>
+    <div class="p-service">由 京东 发货</div>
+    <div class="p-summary">
+      <a href="http://item.jd.com/11320549.html#recommend-editor" target="_blank">更多&gt;</a>
+    </div>
+    <div class="p-addtocart">
+      <a data-sku="11320549" href="http://gate.jd.com/InitCart.aspx?pid=11320549&amp;pcount=1&amp;ptype=1"><i></i>加入购物车</a>
+    </div>
+  </div>
+                  </li>
+2016-01-13 19:04:10 [scrapy] ERROR: Spider error processing <GET http://list.jd.com/list.html?cat=1713,3287,3797&ev=12753%5F136338&page=2&go=0&JL=6_0_0> (referer: http://list.jd.com/list.html?JL=3_%E7%A8%8B%E5%BA%8F%E7%B1%BB%E5%9E%8B_Java&cat=1713%2C3287%2C3797&ev=12753_136338&go=0)
+Traceback (most recent call last):
+  File "c:\python27\lib\site-packages\twisted\internet\defer.py", line 588, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\workspace\4.5_64_Learning\Crawler\jd\spiders\jd_spider.py", line 77, in parse_detail
+    item['name'] = book_element.xpath('/div[3]/a/em/text()').extract()[0].encode('utf-8')
+IndexError: list index out of range
+2016-01-13 19:04:10 [jd] INFO: --------------------------
+2016-01-13 19:04:10 [jd] INFO: GGGGGGGGGGGGGGGGGGGGGGGGG: <li class="gl-item">
+                        <div class="gl-i-wrap j-sku-item" data-sku="10143647" venderid="0" jdzy_shop_id="0" ts_venderid="">
+  <div class="p-img">
+    <a target="_blank" href="http://item.jd.com/10143647.html">
+                    <img width="200" height="200" data-img="1" src="//img12.360buyimg.com/n7/11340/fc23d2b1-ee8d-41c6-bf7d-27a6f9809eb6.jpg">
+          </a>
+      </div>
+  <div class="p-price">
+    <strong class="J_price"><em></em><i></i></strong>
+    <div class="p-icons J-pro-icons">
+          </div>
+  </div>
+  <div class="p-name">
+    <a target="_blank" title="" href="http://item.jd.com/10143647.html">
+      <em>Java Web整合开发全程指南</em>
+      <i class="promo-words"></i>
+    </a>
+  </div>
+      <div class="p-bookdetails">
+      <span class="p-bi-name">
+                  <span class="author_type_1" style="display: ;">
+                                                                     <a title="许锋" href="http://book.jd.com/writer/%E8%AE%B8%E9%94%8B_1.html" target="_blank"> 许锋 </a>                                                        ，                             <a title="周慧英" href="http://book.jd.com/writer/%E5%91%A8%E6%85%A7%E8%8B%B1_1.html" target="_blank"> 周慧英 </a>                                        著          </span>
+                        </span>
+      <em>|</em>      <span class="p-bi-store">
+                  <a title="电子工业出版社" href="http://book.jd.com/publish/%E7%94%B5%E5%AD%90%E5%B7%A5%E4%B8%9A%E5%87%BA%E7%89%88%E7%A4%BE_1.html" target="_blank">电子工业出版社</a>
+              </span>
+      <em>|</em>      <span class="p-bi-date">
+        2009-04      </span>
+    </div>
+        <div class="p-shop hide" data-score="4" data-reputation="0" data-shopid="" data-done="1"></div>
+    <div class="p-commit"><strong>已有<a target="_blank" href="http://item.jd.com/10143647.html#comments-list">3</a>人评价</strong></div>
+    <div class="p-shopnum">
+      <span class="curr-shop">京东自营</span>
+    </div>
+    <div class="p-operate">
+      <a class="p-o-btn focus J_focus" data-sku="10143647" href="javascript:;">
+        <i></i>关注
+      </a>
+      <a class="p-o-btn addcart" target="_blank" href="http://gate.jd.com/InitCart.aspx?pid=10143647&amp;pcount=1&amp;ptype=1">
+        <i></i>加入购物车
+      </a>
+    </div>
+    <div class="p-stock" data-isdeliveryable="5" style="display: none;"></div>
+    <div class="p-service">由 京东 发货</div>
+    <div class="p-summary">
+      <a href="http://item.jd.com/10143647.html#recommend-editor" target="_blank">更多&gt;</a>
+    </div>
+    <div class="p-addtocart">
+      <a data-sku="10143647" href="http://gate.jd.com/InitCart.aspx?pid=10143647&amp;pcount=1&amp;ptype=1"><i></i>加入购物车</a>
+    </div>
+  </div>
+                  </li>
+2016-01-13 19:04:10 [scrapy] ERROR: Spider error processing <GET http://list.jd.com/list.html?cat=1713,3287,3797&ev=12753%5F136338&page=5&go=0&JL=6_0_0> (referer: http://list.jd.com/list.html?JL=3_%E7%A8%8B%E5%BA%8F%E7%B1%BB%E5%9E%8B_Java&cat=1713%2C3287%2C3797&ev=12753_136338&go=0)
+Traceback (most recent call last):
+  File "c:\python27\lib\site-packages\twisted\internet\defer.py", line 588, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\workspace\4.5_64_Learning\Crawler\jd\spiders\jd_spider.py", line 77, in parse_detail
+    item['name'] = book_element.xpath('/div[3]/a/em/text()').extract()[0].encode('utf-8')
+IndexError: list index out of range
+2016-01-13 19:04:10 [jd] INFO: --------------------------
+2016-01-13 19:04:10 [jd] INFO: GGGGGGGGGGGGGGGGGGGGGGGGG: <li class="gl-item">
+                        <div class="gl-i-wrap j-sku-item" data-sku="10925136" venderid="0" jdzy_shop_id="0" ts_venderid="">
+  <div class="p-img">
+    <a target="_blank" href="http://item.jd.com/10925136.html">
+                    <img width="200" height="200" data-img="1" src="//img11.360buyimg.com/n7/19712/81edbf0f-84ca-4cf8-8287-8d4d6c4d5572.jpg">
+          </a>
+      </div>
+  <div class="p-price">
+    <strong class="J_price"><em></em><i></i></strong>
+    <div class="p-icons J-pro-icons">
+          </div>
+  </div>
+  <div class="p-name">
+    <a target="_blank" title="" href="http://item.jd.com/10925136.html">
+      <em>Java中间件技术及其应用开发</em>
+      <i class="promo-words"></i>
+    </a>
+  </div>
+      <div class="p-bookdetails">
+      <span class="p-bi-name">
+                  <span class="author_type_1" style="display: ;">
+                                                                     <a title="李华飚" href="http://book.jd.com/writer/%E6%9D%8E%E5%8D%8E%E9%A3%9A_1.html" target="_blank"> 李华飚 </a>                                        著          </span>
+                        </span>
+      <em>|</em>      <span class="p-bi-store">
+                  <a title="中国水利水电出版社" href="http://book.jd.com/publish/%E4%B8%AD%E5%9B%BD%E6%B0%B4%E5%88%A9%E6%B0%B4%E7%94%B5%E5%87%BA%E7%89%88%E7%A4%BE_1.html" target="_blank">中国水利水电出版社</a>
+              </span>
+      <em>|</em>      <span class="p-bi-date">
+        2007-09      </span>
+    </div>
+        <div class="p-shop hide" data-score="4" data-reputation="0" data-shopid="" data-done="1"></div>
+    <div class="p-commit"><strong>已有<a target="_blank" href="http://item.jd.com/10925136.html#comments-list">4</a>人评价</strong></div>
+    <div class="p-shopnum">
+      <span class="curr-shop">京东自营</span>
+    </div>
+    <div class="p-operate">
+      <a class="p-o-btn focus J_focus" data-sku="10925136" href="javascript:;">
+        <i></i>关注
+      </a>
+      <a class="p-o-btn addcart" target="_blank" href="http://gate.jd.com/InitCart.aspx?pid=10925136&amp;pcount=1&amp;ptype=1">
+        <i></i>加入购物车
+      </a>
+    </div>
+    <div class="p-stock" data-isdeliveryable="5" style="display: none;"></div>
+    <div class="p-service">由 京东 发货</div>
+    <div class="p-summary">
+      <a href="http://item.jd.com/10925136.html#recommend-editor" target="_blank">更多&gt;</a>
+    </div>
+    <div class="p-addtocart">
+      <a data-sku="10925136" href="http://gate.jd.com/InitCart.aspx?pid=10925136&amp;pcount=1&amp;ptype=1"><i></i>加入购物车</a>
+    </div>
+  </div>
+                  </li>
+2016-01-13 19:04:10 [scrapy] ERROR: Spider error processing <GET http://list.jd.com/list.html?cat=1713,3287,3797&ev=12753%5F136338&page=4&go=0&JL=6_0_0> (referer: http://list.jd.com/list.html?JL=3_%E7%A8%8B%E5%BA%8F%E7%B1%BB%E5%9E%8B_Java&cat=1713%2C3287%2C3797&ev=12753_136338&go=0)
+Traceback (most recent call last):
+  File "c:\python27\lib\site-packages\twisted\internet\defer.py", line 588, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\workspace\4.5_64_Learning\Crawler\jd\spiders\jd_spider.py", line 77, in parse_detail
+    item['name'] = book_element.xpath('/div[3]/a/em/text()').extract()[0].encode('utf-8')
+IndexError: list index out of range
+2016-01-13 19:04:10 [jd] INFO: --------------------------
+2016-01-13 19:04:10 [jd] INFO: GGGGGGGGGGGGGGGGGGGGGGGGG: <li class="gl-item">
+                        <div class="gl-i-wrap j-sku-item" data-sku="11831000" venderid="0" jdzy_shop_id="0" ts_venderid="">
+  <div class="p-img">
+    <a target="_blank" href="http://item.jd.com/11831000.html">
+                    <img width="200" height="200" data-img="1" src="//img10.360buyimg.com/n7/jfs/t2314/264/1754768112/352833/64d058cf/566f616bNe4c90ba8.jpg">
+          </a>
+      </div>
+  <div class="p-price">
+    <strong class="J_price"><em></em><i></i></strong>
+    <div class="p-icons J-pro-icons">
+          </div>
+  </div>
+  <div class="p-name">
+    <a target="_blank" title="" href="http://item.jd.com/11831000.html">
+      <em>Java Web开发实例大全 基础卷  配光盘  软件工程师开发大系</em>
+      <i class="promo-words"></i>
+    </a>
+  </div>
+      <div class="p-bookdetails">
+      <span class="p-bi-name">
+                  <span class="author_type_1" style="display: ;">
+                                                                     <a title="软件开发技术联盟" href="http://book.jd.com/writer/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF%E8%81%94%E7%9B%9F_1.html" target="_blank"> 软件开发技术联盟 </a>                                        著          </span>
+                        </span>
+      <em>|</em>      <span class="p-bi-store">
+                  <a title="清华大学出版社" href="http://book.jd.com/publish/%E6%B8%85%E5%8D%8E%E5%A4%A7%E5%AD%A6%E5%87%BA%E7%89%88%E7%A4%BE_1.html" target="_blank">清华大学出版社</a>
+              </span>
+      <em>|</em>      <span class="p-bi-date">
+        2016-01      </span>
+    </div>
+        <div class="p-shop hide" data-score="4" data-reputation="0" data-shopid="" data-done="1"></div>
+    <div class="p-commit"><strong>已有<a target="_blank" href="http://item.jd.com/11831000.html#comments-list">3</a>人评价</strong></div>
+    <div class="p-shopnum">
+      <span class="curr-shop">京东自营</span>
+    </div>
+    <div class="p-operate">
+      <a class="p-o-btn focus J_focus" data-sku="11831000" href="javascript:;">
+        <i></i>关注
+      </a>
+      <a class="p-o-btn addcart" target="_blank" href="http://gate.jd.com/InitCart.aspx?pid=11831000&amp;pcount=1&amp;ptype=1">
+        <i></i>加入购物车
+      </a>
+    </div>
+    <div class="p-stock" data-isdeliveryable="5" style="display: none;"></div>
+    <div class="p-service">由 京东 发货</div>
+    <div class="p-summary">
+      <a href="http://item.jd.com/11831000.html#recommend-editor" target="_blank">更多&gt;</a>
+    </div>
+    <div class="p-addtocart">
+      <a data-sku="11831000" href="http://gate.jd.com/InitCart.aspx?pid=11831000&amp;pcount=1&amp;ptype=1"><i></i>加入购物车</a>
+    </div>
+  </div>
+                  </li>
+2016-01-13 19:04:10 [scrapy] ERROR: Spider error processing <GET http://list.jd.com/list.html?cat=1713,3287,3797&ev=12753%5F136338&page=3&go=0&JL=6_0_0> (referer: http://list.jd.com/list.html?JL=3_%E7%A8%8B%E5%BA%8F%E7%B1%BB%E5%9E%8B_Java&cat=1713%2C3287%2C3797&ev=12753_136338&go=0)
+Traceback (most recent call last):
+  File "c:\python27\lib\site-packages\twisted\internet\defer.py", line 588, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\workspace\4.5_64_Learning\Crawler\jd\spiders\jd_spider.py", line 77, in parse_detail
+    item['name'] = book_element.xpath('/div[3]/a/em/text()').extract()[0].encode('utf-8')
+IndexError: list index out of range
+2016-01-13 19:04:10 [jd] INFO: --------------------------
+2016-01-13 19:04:10 [jd] INFO: GGGGGGGGGGGGGGGGGGGGGGGGG: <li class="gl-item">
+                        <div class="gl-i-wrap j-sku-item" data-sku="1492308970" venderid="80727" jdzy_shop_id="77538" ts_venderid="1492308970">
+  <div class="p-img">
+    <a target="_blank" href="http://item.jd.com/1492308970.html">
+                    <img width="200" height="200" data-img="1" src="//img10.360buyimg.com/n7/jfs/t910/178/239257781/164794/5217d953/550f656eNfa51dcb9.jpg">
+          </a>
+      </div>
+  <div class="p-price">
+    <strong class="J_price"><em></em><i></i></strong>
+    <div class="p-icons J-pro-icons">
+          </div>
+  </div>
+  <div class="p-name">
+    <a target="_blank" title="" href="http://item.jd.com/1492308970.html">
+      <em>实战Java虚拟机——JVM故障诊断与性能优化 9787121256127</em>
+      <i class="promo-words"></i>
+    </a>
+  </div>
+      <div class="p-bookdetails">
+      <span class="p-bi-name">
+              </span>
+            <span class="p-bi-store">
+                  <a title="电子工业出版社" href="http://book.jd.com/publish/%E7%94%B5%E5%AD%90%E5%B7%A5%E4%B8%9A%E5%87%BA%E7%89%88%E7%A4%BE_1.html" target="_blank">电子工业出版社</a>
+              </span>
+      <em>|</em>      <span class="p-bi-date">
+        2014-12      </span>
+    </div>
+        <div class="p-shop hide" data-score="4" data-reputation="0" data-shopid="" data-done="1"></div>
+    <div class="p-commit"><strong>已有<a target="_blank" href="http://item.jd.com/1492308970.html#comments-list">1</a>人评价</strong></div>
+    <div class="p-shopnum">
+      <span class="curr-shop">京东自营</span>
+    </div>
+    <div class="p-operate">
+      <a class="p-o-btn focus J_focus" data-sku="1492308970" href="javascript:;">
+        <i></i>关注
+      </a>
+      <a class="p-o-btn addcart" target="_blank" href="http://gate.jd.com/InitCart.aspx?pid=1492308970&amp;pcount=1&amp;ptype=1">
+        <i></i>加入购物车
+      </a>
+    </div>
+    <div class="p-stock" data-isdeliveryable="5" style="display: none;"></div>
+    <div class="p-service">由 京东 发货</div>
+    <div class="p-summary">
+      <a href="http://item.jd.com/1492308970.html#recommend-editor" target="_blank">更多&gt;</a>
+    </div>
+    <div class="p-addtocart">
+      <a data-sku="1492308970" href="http://gate.jd.com/InitCart.aspx?pid=1492308970&amp;pcount=1&amp;ptype=1"><i></i>加入购物车</a>
+    </div>
+  </div>
+                  </li>
+2016-01-13 19:04:10 [scrapy] ERROR: Spider error processing <GET http://list.jd.com/list.html?cat=1713,3287,3797&ev=12753%5F136338&page=6&go=0&JL=6_0_0> (referer: http://list.jd.com/list.html?JL=3_%E7%A8%8B%E5%BA%8F%E7%B1%BB%E5%9E%8B_Java&cat=1713%2C3287%2C3797&ev=12753_136338&go=0)
+Traceback (most recent call last):
+  File "c:\python27\lib\site-packages\twisted\internet\defer.py", line 588, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\workspace\4.5_64_Learning\Crawler\jd\spiders\jd_spider.py", line 77, in parse_detail
+    item['name'] = book_element.xpath('/div[3]/a/em/text()').extract()[0].encode('utf-8')
+IndexError: list index out of range
+2016-01-13 19:04:10 [scrapy] INFO: Closing spider (finished)
+2016-01-13 19:04:10 [scrapy] INFO: Dumping Scrapy stats:
+{'downloader/request_bytes': 2881,
+ 'downloader/request_count': 8,
+ 'downloader/request_method_count/GET': 8,
+ 'downloader/response_bytes': 188907,
+ 'downloader/response_count': 8,
+ 'downloader/response_status_count/200': 7,
+ 'downloader/response_status_count/302': 1,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2016, 1, 13, 11, 4, 10, 824000),
+ 'log_count/ERROR': 5,
+ 'log_count/INFO': 17,
+ 'log_count/WARNING': 5,
+ 'request_depth_max': 2,
+ 'response_received_count': 7,
+ 'scheduler/dequeued': 8,
+ 'scheduler/dequeued/memory': 8,
+ 'scheduler/enqueued': 8,
+ 'scheduler/enqueued/memory': 8,
+ 'spider_exceptions/IndexError': 5,
+ 'start_time': datetime.datetime(2016, 1, 13, 11, 4, 7, 616000)}
+2016-01-13 19:04:10 [scrapy] INFO: Spider closed (finished)

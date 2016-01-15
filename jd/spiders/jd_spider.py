@@ -46,6 +46,7 @@ class JDSpider(CrawlSpider):
         parse = re.compile(PAGE_PATTERN, re.UNICODE|re.VERBOSE)
         match = parse.search(page_url)
         if match:
+            
             pre_url = match.group(1)
             post_url = match.group(2)
             
@@ -54,28 +55,36 @@ class JDSpider(CrawlSpider):
                 page_url = 'http://list.jd.com' + pre_url+ str(i) + post_url
                 print page_url + ' ??????????????????'
                 r = Request(page_url, callback = self.parse_detail)
-                yield r
+                yield r 
         else:
             print 'NONONONO!'
 
     
     def parse_detail(self, response):
         print '--------------------------'
+        self.logger.info('--------------------------')
         hxs = HtmlXPathSelector(response)
-        book_element = hxs.select("//div[@class='tab-content-item j-sku-item tab-cnt-i-selected']")
-        print str(book_element) + ' ::::::::::::::'
-        if book_element is None or len(book_element) == 0:
-            book_element = hxs.select("//div")
-            print str(book_element) + ' >>>>>>>>>>>>>'
-        item = JdbookItem()
-        item['name'] = book_element.xpath('/div[3]/a/em/text()').extract().encode('utf-8')  
-        item['price'] = book_element.xpath('/div[2]/strong/i/text()').extract().encode('utf-8')
-        item['publisher'] = book_element.xpath('/div[4]/span[2]/a/text()').extract().encode('utf-8') 
-        item['author'] = book_element.xpath('/div[4]/span[1]/span[1]/a[1]/text()').extract().encode('utf-8')
-        item['commit'] = book_element.xpath('/div[6]/strong/a/text()').extract().encode('utf-8') 
-        item['shop'] = book_element.xpath('/div[7]/span/text()').extract().encode('utf-8')
-        return item
-        
+        print str(len(hxs.xpath("//*[@id='plist']/ul/li[@class='gl-item']"))) + ' CCCCCCCCCCCCC' 
+        items = []
+        for gl_item in hxs.xpath("//*[@id='plist']/ul/li[@class='gl-item']"):
+            #self.logger.info("GGGGGGGGGGGGGGGGGGGGGGGGG: %s" % gl_item.extract())
+
+            book_element = gl_item.xpath("div[@class='tab-content-item j-sku-item tab-cnt-i-selected']")
+            if book_element is None or len(book_element) == 0:
+                book_element = gl_item.xpath("div")                 
+            item = JdbookItem()
+            item['name'] = book_element.xpath('div[3]/a/em/text()').extract()[0].encode('utf-8')  
+            print book_element.xpath('div[2]/strong/i').extract()[0] + ' >>>>>>>>>>>>>>>'
+          # item['price'] = book_element.xpath('div[2]/strong/i/text()').extract()[0].encode('utf-8')
+            item['publisher'] = book_element.xpath('div[4]/span[2]/a/text()').extract()[0].encode('utf-8') 
+            item['author'] = book_element.xpath('div[4]/span[1]/span[1]/a[1]/text()').extract()[0].encode('utf-8')
+            item['commit'] = book_element.xpath('div[6]/strong/a/text()').extract()[0].encode('utf-8') 
+            item['shop'] = book_element.xpath('div[7]/span/text()').extract()[0].encode('utf-8')
+#             response.meta['item'] = item
+#             yield response
+            items.append(item)
+        return items
+            
     rules = [                 
 #         Rule(LxmlLinkExtractor(allow=("list.html?cat=1713,3287,3797&ev=12753_136338@&page=1&JL=3_%E7%A8%8B%E5%BA%8F%E7%B1%BB%E5%9E%8B_Java"), restrict_xpaths=("//a[@class='next']")), follow=True),  
 #         Rule(LxmlLinkExtractor(allow=("/\d{8}.html")), callback=parseItemurl)
